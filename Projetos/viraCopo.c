@@ -9,8 +9,8 @@ int main(int argc, char const *argv[]) {
 	int escolha = 1;
 
 	while (escolha != 0) {
-		int ptInicio = 1, ptFinal = 50, palpite, numSecret;
-		
+		int ptInicio = 1, ptFinal = 50, palpite = 0, numSecret = 0;
+
 		printf(">> Projeto Vira-Copo!\n");
 		printf("[1]- Sortear\n");
 		printf("[2]- Escolher\n\n");
@@ -21,11 +21,13 @@ int main(int argc, char const *argv[]) {
 		switch (escolha) {
 		case 1:
 			srand((unsigned) time(NULL));
-			numSecret = 1 + (rand() % ptFinal);	
+			numSecret = 1 + (rand() % ptFinal);
 			break;
 		case 2:
-			printf("Digite o número secreto: ");
-			scanf("%d", &numSecret);
+			while (numSecret < ptInicio || numSecret > ptFinal) {
+				printf("Digite o número secreto: ");
+				scanf("%d", &numSecret);
+			}
 			printf("\e[1;1H\e[2J");
 			break;
 		default:
@@ -36,12 +38,16 @@ int main(int argc, char const *argv[]) {
 			for (int i = ptInicio; i <= ptFinal; i++) {
 				printf("%d ", i);
 			}
-			printf("\n\nDigite seu palpite\n>> ");
-			scanf("%d", &palpite);
+
+			while (palpite < ptInicio || palpite > ptFinal) {
+				printf("\n\nDigite seu palpite\n>> ");
+				scanf("%d", &palpite);
+			}
+
 			if (palpite == numSecret) {
 				printf("/// Vira-Copo! Você acertou!\n\n");
 			} else {
-				if (palpite > numSecret) {
+				if (numSecret < palpite) {
 					ptFinal = palpite - 1;
 				} else {
 					ptInicio = palpite + 1;
