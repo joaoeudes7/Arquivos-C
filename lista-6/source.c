@@ -3,29 +3,17 @@
 #include <time.h> // Necessário p/ função time()
 
 void quest1();
-
 void quest2();
-
 void quest3();
-
 void quest4();
-
 void quest5();
-
 void quest6();
-
 void quest7();
-
 void quest8();
-
 void quest9();
-
 void quest10();
-
 void quest11();
-
 void quest12();
-
 void quest13();
 
 int main() {
