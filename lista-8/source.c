@@ -1,8 +1,16 @@
 #include <stdio.h>
 
+#define KNRM  "\x1B[0m"
+#define KRED  "\x1B[31m"
+#define KGRN  "\x1B[32m"
+#define KYEL  "\x1B[33m"
+#define KBLU  "\x1B[34m"
+#define KMAG  "\x1B[35m"
+#define KCYN  "\x1B[36m"
+#define KWHT  "\x1B[37m"
 
 void quest1();
-// void quest2();
+void quest2();
 // void quest3();
 // void quest4();
 // void quest5();
@@ -14,23 +22,18 @@ void quest1();
 int main() {
 	int option = 1;
 
-	printf("// UFRN - Progamação\n");
+	printf("%s// UFRN - Progamação%s\n", KCYN, KWHT);
 	printf("// Docente: Alexandre\n");
 	printf("// Discente: João Eudes\n\n");
 
 	while (option != 0) {
-		printf(" >> Menu\n");
-		printf("  [1] - Questão 1\n");
-		printf("  [2] - Questão 2\n");
-		printf("  [3] - Questão 3\n");
-		printf("  [4] - Questão 4\n");
-		printf("  [5] - Questão 5\n");
-		printf("  [6] - Questão 6\n");
-		printf("  [7] - Questão 7\n");
-		printf("  [8] - Questão 9\n");
-		printf("  [10] - Questão 10\n\n");
+		printf("%s >> MENU ----------\n%s", KGRN, KWHT);
+		for (int i = 1; i < 10; i++) {
+		printf("    [%d] - Questão %d\n", i, i);			
+		}
 
-		printf("\nQual questão deseja visualizar (0 p/ Sair)\n>> ");
+		
+		printf("\n\nQual questão deseja visualizar (0 p/ Sair)\n>> ");
 		scanf("%d", &option);
 		printf("\n\n");
 
@@ -38,9 +41,9 @@ int main() {
 		case 1:
 			quest1();
 			break;
-		// case 2:
-		// 	quest2();
-		// 	break;
+		case 2:
+			quest2();
+			break;
 		// case 3:
 		// 	quest3();
 		// 	break;
@@ -103,7 +106,7 @@ void quest1() {
 					_tipo.vogais++;
 				}
 			}
-		} else if (temp == ' ' && caracteres[_tipo.qtd - 1] >= 'A') {
+		} else if (temp == ' ' && (caracteres[_tipo.qtd - 1] >= 'A' && caracteres[_tipo.qtd + 1] >= 'A')) {
 			_tipo.palavras++;
 		}
 		_tipo.qtd++;
@@ -115,4 +118,23 @@ void quest1() {
 	printf("Quantidade de minusculos: %d\n", _tipo.minusculos);
 	printf("Quantidade de vogais: %d\n", _tipo.vogais);
 	printf("Quantidade de palavras: %d\n", _tipo.palavras + 1);
+}
+
+void quest2() {
+	char caracteres[80];
+	printf("Alimente a cadeia de caracteres: ");
+	scanf(" %79[^\n]", caracteres);
+
+	for (int i=0; caracteres[i] != '\0'; i++) {
+		char caractere = caracteres[i];
+		if (caractere >= 97 && caractere <= 122) {
+			caracteres[i] = caractere - 32;
+		}
+	}
+
+	printf("Em maiúsculo: %s", caracteres);
+}
+
+void quest3() {
+
 }
